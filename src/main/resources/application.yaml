@@ -1,0 +1,56 @@
+server:
+  port: 8080
+  servlet:
+    contextPath:
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/haruhanal?createDatabaseIfNotExist=true
+    username: root
+    password: 1234
+    hikari:
+      auto-commit: false
+      connection-test-query: SELECT 1
+      minimum-idle: 10
+      maximum-pool-size: 20
+      pool-name: haruhanal-user-pool
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        hbm2ddl.auto: create
+    open-in-view: false
+    show-sql: true
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  mvc:
+    static-path-pattern: /static/**
+
+logging.level:
+  org.hibernate.SQL: debug
+
+management:
+  endpoints:
+    prometheus:
+      enabled: true
+    web:
+      exposure:
+        include: prometheus
+
+
+aws:
+  s3:
+    credentials:
+      access-key: test
+      secret-key: test
+    region:
+      static: test
+    bucket: test
