@@ -29,5 +29,11 @@ public class Product extends BaseEntity {
     @OneToMany(mappedBy = "location", cascade = CascadeType.REMOVE)
     private List<Category_item> category_items = new ArrayList<>();
 
-
+    @Builder
+    public Product(Long id, String title, String text, String product_image_url) {
+        this.id = id;
+        this.title = title;
+        this.text = text;
+        this.product_image_url = product_image_url;
+    }
 }
