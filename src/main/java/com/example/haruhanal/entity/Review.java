@@ -26,10 +26,11 @@ public class Review extends BaseEntity {
     private User user;
 
     @Builder
-    public Review(Long id, String title, String text, String review_image_url) {
+    public Review(Long id, String title, String text, String review_image_url, User user) {
         this.id = id;
         this.title = title;
         this.text = text;
         this.review_image_url = review_image_url;
+        this.user = user;
     }
 }

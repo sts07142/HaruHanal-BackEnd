@@ -26,10 +26,11 @@ public class Question extends BaseEntity {
     private User user;
 
     @Builder
-    public Question(Long id, String title, String text, String answer) {
+    public Question(Long id, String title, String text, String answer, User user) {
         this.id = id;
         this.title = title;
         this.text = text;
         this.answer = answer;
+        this.user = user;
     }
 }
