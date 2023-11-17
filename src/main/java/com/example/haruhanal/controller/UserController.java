@@ -24,6 +24,28 @@ public class UserController {
     private final QuestionService questionService;
 
     /**
+     * 유저 로그인
+     */
+    @GetMapping("/login")
+    public ResponseEntity<UserDTO> loginUser(@RequestBody UserDTO userDTO) {
+        Optional<User> user = userService.getUserByEmail(userDTO.getEmail());
+        if (user.isPresent()) {
+            UserDTO userDto = new UserDTO(user.get());
+            return ResponseEntity.ok(userDto);
+        } else {
+            User newUser = User.builder()
+                    .name(userDTO.getName())
+                    .email(userDTO.getEmail())
+                    .build();
+
+            Long savedUserId = userService.saveUser(newUser);
+            return ResponseEntity.ok(userDTO);
+        }
+
+    }
+
+
+    /**
      * 특정 유저 정보 가져오기
      */
     @GetMapping("/{user_id}")
@@ -76,7 +98,7 @@ public class UserController {
         User user = User.builder()
                 .name(userDTO.getName())
                 .gender((userDTO.getGender()))
-                .phone(userDTO.getPhone())
+                .email(userDTO.getEmail())
                 .age(userDTO.getAge())
                 .address(userDTO.getAddress())
                 .userRole(userDTO.getUserRole())
@@ -97,7 +119,7 @@ public class UserController {
         }
         User user = User.builder()
                 .name(userDTO.getName())
-                .phone(userDTO.getPhone())
+                .email(userDTO.getEmail())
                 .address(userDTO.getAddress())
                 .build();
         userService.updateUser(id, user);
@@ -107,16 +129,16 @@ public class UserController {
     /**
      * 유저 건강정보 업데이트
      */
-    @PutMapping("/condition/{user_id}")
-    public ResponseEntity<Long> updateUserCondition(@PathVariable("user_id") Long id, @RequestBody UserDTO userDTO) {
-        Optional<User> savedUser = userService.getUser(id);
-        if (savedUser.isPresent()) {
-            return ResponseEntity.notFound().build();
-        }
-        String condition = userDTO.getCondition();
-        userService.updateUserCondition(id, condition);
-        return ResponseEntity.ok(id);
-    }
+//    @PutMapping("/condition/{user_id}")
+//    public ResponseEntity<Long> updateUserCondition(@PathVariable("user_id") Long id, @RequestBody UserDTO userDTO) {
+//        Optional<User> savedUser = userService.getUser(id);
+//        if (savedUser.isPresent()) {
+//            return ResponseEntity.notFound().build();
+//        }
+//        String condition = userDTO.getCondition();
+//        userService.updateUserCondition(id, condition);
+//        return ResponseEntity.ok(id);
+//    }
 
     /**
      * 유저 구독여부 업데이트

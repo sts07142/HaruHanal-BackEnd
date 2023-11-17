@@ -19,6 +19,10 @@ public class UserService {
         return userRepository.findById(id);
     }
 
+    public Optional<User> getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     @Transactional
     public Long saveUser(User user) {
         userRepository.save(user);
@@ -32,24 +36,24 @@ public class UserService {
         if (existedUser.isPresent()) {
             User user = existedUser.get();
             user.setName(updatedUser.getName());
-            user.setPhone(updatedUser.getPhone());
+            user.setEmail(updatedUser.getEmail());
             user.setAddress(updatedUser.getAddress());
-        }else {
+        } else {
             throw new IllegalStateException("유저 업데이트에 실패하였습니다.");
         }
     }
 
-    @Transactional
-    public void updateUserCondition(Long id, String condition) {
-        Optional<User> existedUser = userRepository.findById(id);
-
-        if (existedUser.isPresent()) {
-            User user = existedUser.get();
-            user.setCondition(condition);
-        }else {
-            throw new IllegalStateException("유저 건강상태 업데이트에 실패하였습니다.");
-        }
-    }
+//    @Transactional
+//    public void updateUserCondition(Long id, String condition) {
+//        Optional<User> existedUser = userRepository.findById(id);
+//
+//        if (existedUser.isPresent()) {
+//            User user = existedUser.get();
+//            user.setCondition(condition);
+//        } else {
+//            throw new IllegalStateException("유저 건강상태 업데이트에 실패하였습니다.");
+//        }
+//    }
 
     @Transactional
     public void updateUserSubscribe(Long id, Integer subscribe) {
@@ -58,7 +62,7 @@ public class UserService {
         if (existedUser.isPresent()) {
             User user = existedUser.get();
             user.setSubscribe(subscribe);
-        }else {
+        } else {
             throw new IllegalStateException("유저 구독여부 업데이트에 실패하였습니다.");
         }
     }

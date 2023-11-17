@@ -21,7 +21,7 @@ public class ProductService {
     }
 
     public Page<Product> searchProduct(String name, Pageable pageable) {
-        return productRepository.findByNameContainingIgnoreCase(name, pageable);
+        return productRepository.findByTitleContainingIgnoreCase(name, pageable);
     }
     @Transactional
     public Long saveProduct(Product product) {

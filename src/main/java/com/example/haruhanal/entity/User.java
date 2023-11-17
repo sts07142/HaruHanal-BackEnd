@@ -21,19 +21,20 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long id;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String UID;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String password;
     @Column(nullable = false)
     private String name;
     @Enumerated(EnumType.STRING)
     private Gender gender;
     @Column(nullable = false)
-    private String phone;
+    private String email;
     private Integer age;
     private String address;
-    private String condition;
+//    @Column(name = "condition")
+//    private String condition;
     private Integer subscribe;
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
@@ -43,16 +44,16 @@ public class User extends BaseEntity {
     private List<Question> questions = new ArrayList<>();
 
     @Builder
-    public User(Long id, String UID, String password, String name, Gender gender, String phone, Integer age, String address, String condition, Integer subscribe, UserRole userRole) {
+    public User(Long id, String UID, String password, String name, Gender gender, String email, Integer age, String address, String condition, Integer subscribe, UserRole userRole) {
         this.id = id;
         this.UID = UID;
         this.password = password;
         this.name = name;
         this.gender = gender;
-        this.phone = phone;
+        this.email = email;
         this.age = age;
         this.address = address;
-        this.condition = condition;
+//        this.condition = condition;
         this.subscribe = subscribe;
         this.userRole = userRole;
     }
