@@ -11,7 +11,7 @@ public class UserDTO {
     private Long id;
     private String name;
     private Gender gender;
-    private String phone;
+    private String email;
     private int age;
     private String address;
     private String condition;
@@ -22,20 +22,20 @@ public class UserDTO {
         this.id = user.getId();
         this.name = user.getName();
         this.gender = user.getGender();
-        this.phone = user.getPhone();
+        this.email = user.getEmail();
         this.age = user.getAge();
         this.address = user.getAddress();
-        this.condition = user.getCondition();
+//        this.condition = user.getCondition();
         this.subscribe = user.getSubscribe();
         this.userRole = user.getUserRole();
     }
 
     @Builder
-    public UserDTO(Long id, String name, Gender gender, String phone, int age, String address, String condition, Integer subscribe, UserRole userRole) {
+    public UserDTO(Long id, String name, Gender gender, String email, int age, String address, String condition, Integer subscribe, UserRole userRole) {
         this.id = id;
         this.name = name;
         this.gender = gender;
-        this.phone = phone;
+        this.email = email;
         this.age = age;
         this.address = address;
         this.condition = condition;

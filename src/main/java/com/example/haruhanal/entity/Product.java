@@ -26,7 +26,7 @@ public class Product extends BaseEntity {
     private String text;
     private String product_image_url;
     @JsonIgnore
-    @OneToMany(mappedBy = "location", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE)
     private List<Category_item> category_items = new ArrayList<>();
 
     @Builder
