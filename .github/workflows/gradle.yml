@@ -71,9 +71,9 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           envs: GITHUB_SHA
           script: |
-            sudo docker ps
+            sudo docker stop haruhanal
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/docker-test-prod
-            sudo docker run -d -p 8082:8082 ${{ secrets.DOCKER_USERNAME }}/docker-test-prod
+            sudo docker run --rm -d -p 8080:8080 -e DB_URL=${{ secrets.DB_URL }} -e DB_USER=${{ secrets.DB_USER }} -e DB_PASSWORD=${{ secrets.DB_PASSWORD }} --name haruhanal ${{ secrets.DOCKER_USERNAME }}/docker-test-prod
             sudo docker image prune -f
 
 #      ## deploy to develop
