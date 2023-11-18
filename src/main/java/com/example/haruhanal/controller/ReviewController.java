@@ -4,6 +4,7 @@ import com.example.haruhanal.dto.ReviewDTO;
 import com.example.haruhanal.entity.Review;
 import com.example.haruhanal.service.ReviewService;
 import com.example.haruhanal.service.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("v1/reviews")
 @RequiredArgsConstructor
+@Tag(name = "Review", description = "Review API")
 public class ReviewController {
 
     private final ReviewService reviewService;

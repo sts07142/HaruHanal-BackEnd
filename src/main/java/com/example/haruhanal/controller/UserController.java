@@ -7,6 +7,7 @@ import com.example.haruhanal.entity.User;
 import com.example.haruhanal.service.QuestionService;
 import com.example.haruhanal.service.ReviewService;
 import com.example.haruhanal.service.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("v1/user")
 @RequiredArgsConstructor
+@Tag(name = "User", description = "User API")
 public class UserController {
     private final UserService userService;
     private final ReviewService reviewService;

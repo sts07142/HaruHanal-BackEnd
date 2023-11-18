@@ -2,6 +2,7 @@ package com.example.haruhanal.controller;
 
 import com.example.haruhanal.entity.Category;
 import com.example.haruhanal.service.CategoryService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("v1/category")
 @RequiredArgsConstructor
+@Tag(name = "Category", description = "Category API")
 public class CategoryController {
     private final CategoryService categoryService;
 

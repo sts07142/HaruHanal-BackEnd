@@ -4,6 +4,7 @@ import com.example.haruhanal.dto.QuestionDTO;
 import com.example.haruhanal.entity.Question;
 import com.example.haruhanal.service.QuestionService;
 import com.example.haruhanal.service.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("v1/questions")
 @RequiredArgsConstructor
+@Tag(name = "Question", description = "Question API")
 public class QuestionController {
 
     private final QuestionService questionService;

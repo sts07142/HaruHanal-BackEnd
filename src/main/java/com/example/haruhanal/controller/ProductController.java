@@ -3,6 +3,7 @@ package com.example.haruhanal.controller;
 import com.example.haruhanal.dto.ProductDTO;
 import com.example.haruhanal.entity.Product;
 import com.example.haruhanal.service.ProductService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +16,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("v1/products")
 @RequiredArgsConstructor
+@Tag(name = "Product", description = "Product API")
 public class ProductController {
     private final ProductService productService;
 
