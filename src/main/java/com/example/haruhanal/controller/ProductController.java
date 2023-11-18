@@ -63,7 +63,7 @@ public class ProductController {
     @PutMapping("/{product_id}")
     public ResponseEntity<Long> updateProduct(@PathVariable("product_id") Long id, @RequestBody ProductDTO productDTO) {
         Optional<Product> savedProduct = productService.getProduct(id);
-        if (savedProduct.isPresent()) {
+        if (savedProduct.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         Product product = Product.builder()
@@ -81,7 +81,7 @@ public class ProductController {
     @DeleteMapping("/{product_id}")
     public ResponseEntity<Long> deleteProduct(@PathVariable("product_id") Long id) {
         Optional<Product> savedProduct = productService.getProduct(id);
-        if (savedProduct.isPresent()) {
+        if (savedProduct.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         Long deletedProductId = productService.deleteProduct(id);

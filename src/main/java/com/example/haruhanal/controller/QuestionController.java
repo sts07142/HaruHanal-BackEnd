@@ -52,10 +52,10 @@ public class QuestionController {
     /**
      * 특정 리뷰 업데이트
      */
-    @PutMapping("/{question_id}")
+    @PatchMapping("/{question_id}")
     public ResponseEntity<Long> updateQuestion(@PathVariable("question_id") Long id, @RequestBody QuestionDTO questionDTO) {
         Optional<Question> savedQuestion = questionService.getQuestion(id);
-        if (savedQuestion.isPresent()) {
+        if (savedQuestion.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         Question question = Question.builder()
@@ -73,7 +73,7 @@ public class QuestionController {
     @DeleteMapping("/{question_id}")
     public ResponseEntity<Long> deleteQuestion(@PathVariable("question_id") Long id) {
         Optional<Question> savedQuestion = questionService.getQuestion(id);
-        if (savedQuestion.isPresent()) {
+        if (savedQuestion.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         Long deletedQuestionId = questionService.deleteQuestion(id);

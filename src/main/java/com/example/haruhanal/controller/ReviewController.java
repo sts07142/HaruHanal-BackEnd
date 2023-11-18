@@ -55,7 +55,7 @@ public class ReviewController {
     @PutMapping("/{review_id}")
     public ResponseEntity<Long> updateReview(@PathVariable("review_id") Long id, @RequestBody ReviewDTO reviewDTO) {
         Optional<Review> savedReview = reviewService.getReview(id);
-        if (savedReview.isPresent()) {
+        if (savedReview.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         Review review = Review.builder()
@@ -74,7 +74,7 @@ public class ReviewController {
     @DeleteMapping("/{review_id}")
     public ResponseEntity<Long> deleteReview(@PathVariable("review_id") Long id) {
         Optional<Review> savedReview = reviewService.getReview(id);
-        if (savedReview.isPresent()) {
+        if (savedReview.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         Long deletedReviewId = reviewService.deleteReview(id);

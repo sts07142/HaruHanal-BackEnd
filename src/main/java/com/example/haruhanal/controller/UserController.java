@@ -116,7 +116,7 @@ public class UserController {
     @PutMapping("/{user_id}")
     public ResponseEntity<Long> updateUser(@PathVariable("user_id") Long id, @RequestBody UserDTO userDTO) {
         Optional<User> savedUser = userService.getUser(id);
-        if (savedUser.isPresent()) {
+        if (savedUser.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         User user = User.builder()
@@ -148,7 +148,7 @@ public class UserController {
     @PutMapping("/subscribe/{user_id}")
     public ResponseEntity<Long> updateUserSubscribe(@PathVariable("user_id") Long id, @RequestBody UserDTO userDTO) {
         Optional<User> savedUser = userService.getUser(id);
-        if (savedUser.isPresent()) {
+        if (savedUser.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         Integer sub = userDTO.getSubscribe();
@@ -163,7 +163,7 @@ public class UserController {
     @DeleteMapping("/{user_id}")
     public ResponseEntity<Long> deleteUser(@PathVariable("user_id") Long id) {
         Optional<User> savedUser = userService.getUser(id);
-        if (savedUser.isPresent()) {
+        if (savedUser.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
         Long deletedUserId = userService.deleteUser(id);
