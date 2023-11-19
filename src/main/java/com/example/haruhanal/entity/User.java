@@ -33,7 +33,7 @@ public class User extends BaseEntity {
     private String email;
     private Integer age;
     private String address;
-//    @Column(name = "condition")
+    @Column(name = "'condition'")
     private String condition;
     private Integer subscribe;
     @Enumerated(EnumType.STRING)
