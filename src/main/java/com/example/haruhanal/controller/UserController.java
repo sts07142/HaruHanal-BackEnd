@@ -35,6 +35,7 @@ public class UserController {
         if (user.isPresent()) {//기존회원
             
             LoginDTO loginDto = LoginDTO.builder()
+                    .id(user.get().getId())
                     .name(user.get().getName())
                     .email(user.get().getEmail())
                     .condition(user.get().getCondition())
@@ -49,13 +50,14 @@ public class UserController {
                     .build();
 
             Long savedUserId = userService.saveUser(newUser);
-            Optional<User> newuser = userService.getUser(savedUserId);
-            if (newuser.isEmpty()) {
+            Optional<User> newMember = userService.getUser(savedUserId);
+            if (newMember.isEmpty()) {
                 return ResponseEntity.notFound().build();
             }
             LoginDTO newLoginDto = LoginDTO.builder()
-                    .name(newuser.get().getName())
-                    .email(newuser.get().getEmail())
+                    .id(newMember.get().getId())
+                    .name(newMember.get().getName())
+                    .email(newMember.get().getEmail())
                     .alreadyMember(0)
                     .build();
             
