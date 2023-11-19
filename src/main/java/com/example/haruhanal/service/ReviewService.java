@@ -3,6 +3,8 @@ package com.example.haruhanal.service;
 import com.example.haruhanal.entity.Review;
 import com.example.haruhanal.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +21,10 @@ public class ReviewService {
     public Long saveReview(Review review) {
         reviewRepository.save(review);
         return review.getId();
+    }
+
+    public Page<Review> getAllReview(Pageable pageable) {
+        return reviewRepository.findAll(pageable);
     }
     public Optional<Review> getReview(Long review_id){
         return reviewRepository.findById(review_id);

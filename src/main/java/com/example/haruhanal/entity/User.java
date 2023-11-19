@@ -34,7 +34,7 @@ public class User extends BaseEntity {
     private Integer age;
     private String address;
 //    @Column(name = "condition")
-//    private String condition;
+    private String condition;
     private Integer subscribe;
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
@@ -53,7 +53,7 @@ public class User extends BaseEntity {
         this.email = email;
         this.age = age;
         this.address = address;
-//        this.condition = condition;
+        this.condition = condition;
         this.subscribe = subscribe;
         this.userRole = userRole;
     }

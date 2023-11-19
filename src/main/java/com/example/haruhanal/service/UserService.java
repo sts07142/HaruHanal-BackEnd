@@ -43,17 +43,17 @@ public class UserService {
         }
     }
 
-//    @Transactional
-//    public void updateUserCondition(Long id, String condition) {
-//        Optional<User> existedUser = userRepository.findById(id);
-//
-//        if (existedUser.isPresent()) {
-//            User user = existedUser.get();
-//            user.setCondition(condition);
-//        } else {
-//            throw new IllegalStateException("유저 건강상태 업데이트에 실패하였습니다.");
-//        }
-//    }
+    @Transactional
+    public void updateUserCondition(Long id, String condition) {
+        Optional<User> existedUser = userRepository.findById(id);
+
+        if (existedUser.isPresent()) {
+            User user = existedUser.get();
+            user.setCondition(condition);
+        } else {
+            throw new IllegalStateException("유저 건강상태 업데이트에 실패하였습니다.");
+        }
+    }
 
     @Transactional
     public void updateUserSubscribe(Long id, Integer subscribe) {

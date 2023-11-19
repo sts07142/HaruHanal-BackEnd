@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class UserDTO {
+public class LoginDTO {
     private Long id;
     private String name;
     private Gender gender;
@@ -17,8 +17,9 @@ public class UserDTO {
     private String condition;
     private Integer subscribe;
     private UserRole userRole;
+    private Integer alreadyMember; //0은 신규 1은 기존
 
-    public UserDTO(User user) {
+    public LoginDTO(User user) {
         this.id = user.getId();
         this.name = user.getName();
         this.gender = user.getGender();
@@ -31,7 +32,7 @@ public class UserDTO {
     }
 
     @Builder
-    public UserDTO(Long id, String name, Gender gender, String email, int age, String address, String condition, Integer subscribe, UserRole userRole) {
+    public LoginDTO(Long id, String name, Gender gender, String email, int age, String address, String condition, Integer subscribe, UserRole userRole, Integer alreadyMember) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -41,6 +42,6 @@ public class UserDTO {
         this.condition = condition;
         this.subscribe = subscribe;
         this.userRole = userRole;
+        this.alreadyMember = alreadyMember;
     }
 }
-

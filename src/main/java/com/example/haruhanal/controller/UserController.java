@@ -1,5 +1,6 @@
 package com.example.haruhanal.controller;
 
+import com.example.haruhanal.dto.LoginDTO;
 import com.example.haruhanal.dto.QuestionDTO;
 import com.example.haruhanal.dto.ReviewDTO;
 import com.example.haruhanal.dto.UserDTO;
@@ -29,19 +30,36 @@ public class UserController {
      * 유저 로그인
      */
     @GetMapping("/login")
-    public ResponseEntity<UserDTO> loginUser(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<LoginDTO> loginUser(@RequestBody UserDTO userDTO) {
         Optional<User> user = userService.getUserByEmail(userDTO.getEmail());
-        if (user.isPresent()) {
-            UserDTO userDto = new UserDTO(user.get());
-            return ResponseEntity.ok(userDto);
-        } else {
+        if (user.isPresent()) {//기존회원
+            
+            LoginDTO loginDto = LoginDTO.builder()
+                    .name(user.get().getName())
+                    .email(user.get().getEmail())
+                    .condition(user.get().getCondition())
+                    .subscribe(user.get().getSubscribe())
+                    .alreadyMember(1)
+                    .build();
+            return ResponseEntity.ok(loginDto);
+        } else {//신규회원
             User newUser = User.builder()
                     .name(userDTO.getName())
                     .email(userDTO.getEmail())
                     .build();
 
             Long savedUserId = userService.saveUser(newUser);
-            return ResponseEntity.ok(userDTO);
+            Optional<User> newuser = userService.getUser(savedUserId);
+            if (newuser.isEmpty()) {
+                return ResponseEntity.notFound().build();
+            }
+            LoginDTO newLoginDto = LoginDTO.builder()
+                    .name(newuser.get().getName())
+                    .email(newuser.get().getEmail())
+                    .alreadyMember(0)
+                    .build();
+            
+            return ResponseEntity.ok(newLoginDto);
         }
 
     }
@@ -66,7 +84,7 @@ public class UserController {
     @GetMapping("/reviews/{user_id}")
     public ResponseEntity<List<ReviewDTO>> getReviews(@PathVariable("user_id") Long id) {
         Optional<User> savedUser = userService.getUser(id);
-        if (savedUser.isPresent()) {
+        if (savedUser.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
@@ -82,7 +100,7 @@ public class UserController {
     @GetMapping("/questions/{user_id}")
     public ResponseEntity<List<QuestionDTO>> getQuestions(@PathVariable("user_id") Long id) {
         Optional<User> savedUser = userService.getUser(id);
-        if (savedUser.isPresent()) {
+        if (savedUser.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
@@ -131,16 +149,16 @@ public class UserController {
     /**
      * 유저 건강정보 업데이트
      */
-//    @PutMapping("/condition/{user_id}")
-//    public ResponseEntity<Long> updateUserCondition(@PathVariable("user_id") Long id, @RequestBody UserDTO userDTO) {
-//        Optional<User> savedUser = userService.getUser(id);
-//        if (savedUser.isPresent()) {
-//            return ResponseEntity.notFound().build();
-//        }
-//        String condition = userDTO.getCondition();
-//        userService.updateUserCondition(id, condition);
-//        return ResponseEntity.ok(id);
-//    }
+    @PutMapping("/condition/{user_id}")
+    public ResponseEntity<Long> updateUserCondition(@PathVariable("user_id") Long id, @RequestBody UserDTO userDTO) {
+        Optional<User> savedUser = userService.getUser(id);
+        if (savedUser.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        String condition = userDTO.getCondition();
+        userService.updateUserCondition(id, condition);
+        return ResponseEntity.ok(id);
+    }
 
     /**
      * 유저 구독여부 업데이트

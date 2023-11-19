@@ -6,6 +6,9 @@ import com.example.haruhanal.service.ReviewService;
 import com.example.haruhanal.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +23,16 @@ public class ReviewController {
     private final ReviewService reviewService;
     private final UserService userService;
 
-
+    /**
+     * 전체 리뷰 가져오기
+     */
+    @GetMapping("/all")
+    public Page<ReviewDTO> searchReview(@RequestParam("page") int page, @RequestParam("size") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Review> pages = reviewService.getAllReview(pageable);
+        return pages.map(ReviewDTO::new);
+    }
+    
     /**
      * 특정 리뷰 가져오기
      */
