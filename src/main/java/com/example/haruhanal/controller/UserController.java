@@ -29,7 +29,7 @@ public class UserController {
     /**
      * 유저 로그인
      */
-    @GetMapping("/login")
+    @PostMapping("/login")
     public ResponseEntity<LoginDTO> loginUser(@RequestBody UserDTO userDTO) {
         Optional<User> user = userService.getUserByEmail(userDTO.getEmail());
         if (user.isPresent()) {//기존회원
