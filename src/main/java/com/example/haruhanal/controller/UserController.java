@@ -147,6 +147,19 @@ public class UserController {
     }
 
     /**
+     * 특정 유저 건강정보 가져오기
+     */
+    @GetMapping("/condition/{user_id}")
+    public ResponseEntity<String> getUserCondition(@PathVariable("user_id") Long id) {
+        Optional<User> savedUser = userService.getUser(id);
+        if (savedUser.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        String condition = savedUser.get().getCondition();
+        return ResponseEntity.ok(condition);
+    }
+
+    /**
      * 유저 건강정보 업데이트
      */
     @PutMapping("/condition/{user_id}")
