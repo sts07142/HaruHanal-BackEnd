@@ -1,5 +1,5 @@
 # 하루한알
-> **가천대학교 소프트웨어학과 프로젝트** <br/> **개발기간: 2023.09 ~ 2023.11**
+> **가천대학교 소프트웨어학과 프로젝트** <br/> **개발기간: 2023.09 ~ 2023.11** <br/> **BackEnd: 문희상**
 
 ---
 
@@ -54,3 +54,24 @@
 
 ## ERD
 ![KakaoTalk_20231120_163915020](https://github.com/Haru-Hanal/BackEnd/assets/118061713/1ff5696f-f6cd-48b7-a1ac-e9c536b98688)
+
+---
+
+## Rest API
+
+### User
+![user](https://github.com/Haru-Hanal/BackEnd/assets/118061713/83f8314b-77dd-4826-8064-3ffce890a96b)
+
+### Review
+![review](https://github.com/Haru-Hanal/BackEnd/assets/118061713/43311df3-59b7-4e8d-a7f7-5e97c1739033)
+
+### Question
+![question](https://github.com/Haru-Hanal/BackEnd/assets/118061713/ce61400a-66e4-454f-8cea-bf253b9b8cc5)
+
+### Product
+![product](https://github.com/Haru-Hanal/BackEnd/assets/118061713/f01169a2-546b-4944-97f4-1af8f06e67fd)
+
+### Category
+![category](https://github.com/Haru-Hanal/BackEnd/assets/118061713/c5fd053e-8dd5-4586-ab53-fcc82ae2ae6c)
+
+
