@@ -39,3 +39,18 @@
 ### Communication
 ![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white)
 ![GoogleMeet](https://img.shields.io/badge/GoogleMeet-00897B?style=for-the-badge&logo=Google%20Meet&logoColor=white)
+
+---
+
+## System Architecture
+![KakaoTalk_20231119_1638005301](https://github.com/Haru-Hanal/BackEnd/assets/118061713/1aa8268b-6900-49d4-a0c9-c701eba5e6d4)
+
+---
+
+## CI/CD
+![KakaoTalk_20231119_153440094](https://github.com/Haru-Hanal/BackEnd/assets/118061713/35ace9cd-dbfa-4da7-bf33-0c6bedf400d2)
+
+---
+
+## ERD
+![KakaoTalk_20231120_163915020](https://github.com/Haru-Hanal/BackEnd/assets/118061713/1ff5696f-f6cd-48b7-a1ac-e9c536b98688)
