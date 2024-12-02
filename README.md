@@ -1,9 +1,14 @@
 # 하루한알
-> **가천대학교 소프트웨어학과 프로젝트** <br/> **개발기간: 2023.10 ~ 2023.11** <br/> **BackEnd: 문희상**
+> **가천대학교 소프트웨어학과 프로젝트**<br>
+**개발기간: 2023.10 ~ 2023.11**<br>
+**담당 업무: GPT기반 영양제 자동 추천 시스템 개발**
 
 ---
 
 ## 프로젝트 소개
+
+- 어떤 영양제를 선택할지 어려울 때, **하루한알**
+
 ### Target
 
 - 직장인 : 책상에서 오랜 시간을 보내며 규칙적인 식사와 운동, 정기 건강검진을 소홀히 하는 경우가 많음.
@@ -35,6 +40,9 @@
 ![JAVA](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 ![Spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-007ACC?style=for-the-badge&logo=flask&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-000000?style=for-the-badge&logo=openai&logoColor=white)
+
 
 ### Communication
 ![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white)
